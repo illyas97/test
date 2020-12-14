@@ -1,5 +1,3 @@
-//*code based on SkrewEverything*//
-// Server side C program to demonstrate Socket programming
 #include <stdio.h>
 #include <sys/socket.h>
 #include <unistd.h>
@@ -13,8 +11,9 @@ int main(int argc, char const *argv[])
     int server_fd, new_socket; long valread;
     struct sockaddr_in address;
     int addrlen = sizeof(address);
-   
-    char *hello = "HTTP/1.1 200 OK\nContent-Type: text/plain\nContent-Length: 12\n\nHello world!"; 
+    
+    // Only this line has been changed. Everything is same.
+    char *hello = "HTTP/1.1 200 OK\nContent-Type: text/plain\nContent-Length: 12\n\nHello world!";
     
     // Creating socket file descriptor
     if ((server_fd = socket(AF_INET, SOCK_STREAM, 0)) == 0)
@@ -54,7 +53,7 @@ int main(int argc, char const *argv[])
         valread = read( new_socket , buffer, 30000);
         printf("%s\n",buffer );
         write(new_socket , hello , strlen(hello));
-        printf("------------------Hello message sent-------------------\n");
+        printf("------------------Hello message sent-------------------");
         close(new_socket);
     }
     return 0;
